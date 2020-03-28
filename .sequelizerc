@@ -1,4 +1,5 @@
 const { resolve } = require("path");
+require('dotenv').config()
 
 module.exports = {
   config: resolve(__dirname, "src", "config", "database.js"),
