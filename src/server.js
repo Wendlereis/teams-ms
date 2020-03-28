@@ -1,9 +1,3 @@
-import express from "express";
+import app from "./app";
 
-const server = express();
-
-server.use("/", (req, res) => {
-  return res.json({ ok: true });
-});
-
-server.listen(3333);
+app.listen(3333);
