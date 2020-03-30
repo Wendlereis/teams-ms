@@ -1,0 +1,19 @@
+import Sequelize, { Model } from "sequelize";
+
+class Event extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        name: Sequelize.STRING,
+        start_date: Sequelize.DATE,
+        final_date: Sequelize.DATE,
+        event_type_id: Sequelize.INTEGER,
+      },
+      {
+        sequelize,
+      }
+    );
+  }
+}
+
+export default Event;
