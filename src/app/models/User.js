@@ -12,6 +12,10 @@ class User extends Model {
       }
     );
   }
+
+  static associations(models) {
+    this.belongsTo(models.UserTeams);
+  }
 }
 
 export default User;

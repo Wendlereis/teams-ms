@@ -14,6 +14,10 @@ class Event extends Model {
       }
     );
   }
+
+  static associations(models) {
+    this.belongsTo(models.UserTeams);
+  }
 }
 
 export default Event;

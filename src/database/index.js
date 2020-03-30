@@ -2,9 +2,10 @@ import Sequelize from "sequelize";
 import databaseConfig from "../config/database";
 
 import User from "../app/models/User";
-import Event from "../app/models/Event"
+import Event from "../app/models/Event";
+import UserTeam from "../app/models/UserTeam";
 
-const models = [User, Event];
+const models = [User, Event, UserTeam];
 
 class Database {
   constructor() {
