@@ -11,6 +11,7 @@ class UserTeam extends Model {
       },
       {
         sequelize,
+        tableName: "users_teams",
       }
     );
   }
