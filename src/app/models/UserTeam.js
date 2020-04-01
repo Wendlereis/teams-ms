@@ -16,9 +16,26 @@ class UserTeam extends Model {
     );
   }
 
-  static associations(models) {
-    this.hasMany(models.User);
-    this.hasMany(models.Event);
+  static associate(models) {
+    this.belongsTo(models.Event, {
+      foreignKey: "event_id",
+      as: "event",
+    });
+
+    this.belongsTo(models.User, {
+      foreignKey: "user_id",
+      as: "user",
+    });
+
+    this.belongsTo(models.Team, {
+      foreignKey: "team_id",
+      as: "team",
+    });
+
+    this.belongsTo(models.TeamRole, {
+      foreignKey: "team_role_id",
+      as: "team_role",
+    });
   }
 }
 

@@ -1,7 +1,19 @@
 import UserTeam from "../models/UserTeam";
+import Event from "../models/Event";
+import User from "../models/User";
+import Team from "../models/Team";
+import TeamRole from "../models/TeamRole";
 
 export async function index(_, res) {
-  const userTeam = await UserTeam.findAll();
+  const userTeam = await UserTeam.findAll({
+    attributes: [],
+    include: [
+      { model: Event, as: "event", attributes: ["name"] },
+      { model: User, as: "user", attributes: ["name"] },
+      { model: Team, as: "team", attributes: ["name"] },
+      { model: TeamRole, as: "team_role", attributes: ["name"] },
+    ],
+  });
 
   return res.status(200).json(userTeam);
 }
@@ -9,7 +21,15 @@ export async function index(_, res) {
 export async function show(req, res) {
   const { id } = req.params;
 
-  const userTeam = await UserTeam.findByPk(id);
+  const userTeam = await UserTeam.findByPk(id, {
+    attributes: [],
+    include: [
+      { model: Event, as: "event", attributes: ["name"] },
+      { model: User, as: "user", attributes: ["name"] },
+      { model: Team, as: "team", attributes: ["name"] },
+      { model: TeamRole, as: "team_role", attributes: ["name"] },
+    ],
+  });
 
   return res.status(200).json(userTeam);
 }
