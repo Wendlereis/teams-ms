@@ -1,7 +1,17 @@
 import Event from "../models/Event";
+import EventType from "../models/EventType";
 
 export async function index(_, res) {
-  const event = await Event.findAll();
+  const event = await Event.findAll({
+    attributes: ["id", "name", "start_date", "final_date"],
+    include: [
+      {
+        model: EventType,
+        as: "event_type",
+        attributes: [["short_name", "name"]],
+      },
+    ],
+  });
 
   return res.status(200).json(event);
 }
@@ -9,20 +19,24 @@ export async function index(_, res) {
 export async function show(req, res) {
   const { id } = req.params;
 
-  const event = await Event.findByPk(id);
+  const event = await Event.findByPk(id, {
+    attributes: ["id", "name", "start_date", "final_date"],
+    include: [
+      {
+        model: EventType,
+        as: "event_type",
+        attributes: [["short_name", "name"]],
+      },
+    ],
+  });
 
   return res.status(200).json(event);
 }
 
 export async function create(req, res) {
-  const { name, start_date, final_date, event_type_id } = req.body;
+  const data = req.body;
 
-  const event = await Event.create({
-    start_date: new Date(start_date),
-    final_date: new Date(final_date),
-    name,
-    event_type_id,
-  });
+  const event = await Event.create(data);
 
   return res.status(201).json(event);
 }

@@ -7,7 +7,6 @@ class Event extends Model {
         name: Sequelize.STRING,
         start_date: Sequelize.DATE,
         final_date: Sequelize.DATE,
-        event_type_id: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -15,8 +14,11 @@ class Event extends Model {
     );
   }
 
-  static associations(models) {
-    this.belongsTo(models.UserTeams);
+  static associate(models) {
+    this.belongsTo(models.EventType, {
+      foreignKey: "event_type_id",
+      as: "event_type",
+    });
   }
 }
 
