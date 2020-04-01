@@ -1,14 +1,15 @@
 import Sequelize, { Model } from "sequelize";
 
-class User extends Model {
+class EventType extends Model {
   static init(sequelize) {
     super.init(
       {
-        name: Sequelize.STRING,
-        age: Sequelize.INTEGER,
+        short_name: Sequelize.STRING,
+        long_name: Sequelize.STRING,
       },
       {
         sequelize,
+        tableName: "events_types",
       }
     );
 
@@ -16,4 +17,4 @@ class User extends Model {
   }
 }
 
-export default User;
+export default EventType;

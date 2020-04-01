@@ -1,14 +1,14 @@
 import Sequelize, { Model } from "sequelize";
 
-class User extends Model {
+class TeamRole extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        age: Sequelize.INTEGER,
       },
       {
         sequelize,
+        tableName: "teams_roles",
       }
     );
 
@@ -16,4 +16,4 @@ class User extends Model {
   }
 }
 
-export default User;
+export default TeamRole;
