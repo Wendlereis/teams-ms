@@ -10,6 +10,8 @@ class Team extends Model {
         sequelize,
       }
     );
+
+    return this;
   }
 }
 

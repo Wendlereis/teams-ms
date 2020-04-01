@@ -12,6 +12,8 @@ class EventType extends Model {
         tableName: "events_types",
       }
     );
+
+    return this;
   }
 }
 

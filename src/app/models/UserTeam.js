@@ -14,6 +14,8 @@ class UserTeam extends Model {
         tableName: "users_teams",
       }
     );
+
+    return this;
   }
 
   static associate(models) {

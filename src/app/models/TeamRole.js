@@ -11,6 +11,8 @@ class TeamRole extends Model {
         tableName: "teams_roles",
       }
     );
+
+    return this;
   }
 }
 
