@@ -6,8 +6,9 @@ module.exports = {
       "users",
       [
         {
-          name: "John Doe",
-          age: 22,
+          name: "Administrador do sistema",
+          age: 99,
+          system_role_id: 3,
           created_at: new Date(),
           updated_at: new Date(),
         },

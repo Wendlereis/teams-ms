@@ -7,8 +7,9 @@ import Team from "../app/models/Team";
 import TeamRole from "../app/models/TeamRole";
 import User from "../app/models/User";
 import UserTeam from "../app/models/UserTeam";
+import SystemRole from "../app/models/SystemRole";
 
-const models = [Event, EventType, Team, TeamRole, User, UserTeam];
+const models = [Event, EventType, Team, TeamRole, User, UserTeam, SystemRole];
 
 class Database {
   constructor() {
