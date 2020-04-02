@@ -1,11 +1,10 @@
 import Sequelize, { Model } from "sequelize";
 
-class User extends Model {
+class SystemRole extends Model {
   static init(sequelize) {
     super.init(
       {
         name: Sequelize.STRING,
-        age: Sequelize.INTEGER,
       },
       {
         sequelize,
@@ -14,10 +13,6 @@ class User extends Model {
 
     return this;
   }
-
-  static associate(models) {
-    this.belongsTo(models.SystemRole, { foreignKey: "system_role_id" });
-  }
 }
 
-export default User;
+export default SystemRole;
