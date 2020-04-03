@@ -28,6 +28,8 @@ module.exports = {
           model: "events_types",
           key: "id",
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       created_at: {
         type: Sequelize.DATE,

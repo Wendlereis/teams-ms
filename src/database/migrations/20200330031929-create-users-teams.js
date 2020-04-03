@@ -15,10 +15,9 @@ module.exports = {
         references: {
           model: "events",
           key: "id",
-          onUpdate: "CASCADE",
-          onDelete: "SET NULL",
-          allowNull: false,
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -26,10 +25,9 @@ module.exports = {
         references: {
           model: "users",
           key: "id",
-          onUpdate: "CASCADE",
-          onDelete: "SET NULL",
-          allowNull: false,
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       team_id: {
         type: Sequelize.INTEGER,
@@ -37,10 +35,9 @@ module.exports = {
         references: {
           model: "teams",
           key: "id",
-          onUpdate: "CASCADE",
-          onDelete: "SET NULL",
-          allowNull: false,
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       team_role_id: {
         type: Sequelize.INTEGER,
@@ -48,10 +45,9 @@ module.exports = {
         references: {
           model: "teams_roles",
           key: "id",
-          onUpdate: "CASCADE",
-          onDelete: "SET NULL",
-          allowNull: false,
         },
+        onUpdate: "CASCADE",
+        onDelete: "SET NULL",
       },
       created_at: {
         type: Sequelize.DATE,
