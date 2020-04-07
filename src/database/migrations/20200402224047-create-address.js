@@ -2,34 +2,36 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("events", {
+    return queryInterface.createTable("addresses", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      street: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      start_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      final_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      event_type_id: {
+      number: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        references: {
-          model: "events_types",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+      },
+      complement: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      neighbourhood: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      state: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      city: {
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       created_at: {
         type: Sequelize.DATE,
@@ -43,6 +45,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("events");
+    return queryInterface.dropTable("addresses");
   },
 };

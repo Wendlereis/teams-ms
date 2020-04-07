@@ -1,4 +1,6 @@
 import User from "../models/User";
+import Address from "../models/Address";
+import PhoneNumber from "../models/PhoneNumber";
 
 export async function index(_, res) {
   const user = await User.findAll();
@@ -15,9 +17,15 @@ export async function show(req, res) {
 }
 
 export async function create(req, res) {
-  const data = req.body;
+  const { address, phone, ...data } = req.body;
 
-  const user = await User.create(data);
+  const { id: address_id } = await Address.create(address);
+
+  const { id: phone_id } = await PhoneNumber.create(phone);
+
+  const userData = { ...data, address_id, phone_id };
+
+  const user = await User.create(userData);
 
   return res.status(201).json(user);
 }

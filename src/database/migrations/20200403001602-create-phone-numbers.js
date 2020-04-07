@@ -2,34 +2,20 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("events", {
+    return queryInterface.createTable("phone_numbers", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
       },
-      name: {
+      landline_phone: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      mobile_phone: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      start_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      final_date: {
-        type: Sequelize.DATE,
-        allowNull: false,
-      },
-      event_type_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "events_types",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
       },
       created_at: {
         type: Sequelize.DATE,
@@ -43,6 +29,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable("events");
+    return queryInterface.dropTable("phone_numbers");
   },
 };
