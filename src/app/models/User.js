@@ -23,7 +23,7 @@ class User extends Model {
   static associate(models) {
     this.belongsTo(models.SystemRole, { foreignKey: "system_role_id" });
     this.belongsTo(models.Address, { foreignKey: "address_id" });
-    this.belongsTo(models.PhoneNumber, { foreignKey: "phone_number_id" });
+    this.belongsTo(models.PhoneNumber, { foreignKey: "phone_id" });
   }
 }
 

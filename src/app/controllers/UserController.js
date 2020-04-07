@@ -19,19 +19,15 @@ export async function show(req, res) {
 export async function create(req, res) {
   const { address, phone, ...data } = req.body;
 
-  try {
-    const { id: address_id } = await Address.create(address);
+  const { id: address_id } = await Address.create(address);
 
-    const { id: phone_id } = await PhoneNumber.create(phone);
+  const { id: phone_id } = await PhoneNumber.create(phone);
 
-    const userData = { ...data, address_id, phone_id };
+  const userData = { ...data, address_id, phone_id };
 
-    const user = await User.create(userData);
+  const user = await User.create(userData);
 
-    return res.status(201).json(user);
-  } catch (error) {
-    return res.status(422).json({ error });
-  }
+  return res.status(201).json(user);
 }
 
 export async function update(req, res) {
