@@ -25,9 +25,9 @@ export async function create(req, res) {
 
   const userData = { ...data, address_id, phone_id };
 
-  const user = await User.create(userData);
+  const { id, name, username, email } = await User.create(userData);
 
-  return res.status(201).json(user);
+  return res.status(201).json({ id, name, username, email });
 }
 
 export async function update(req, res) {
