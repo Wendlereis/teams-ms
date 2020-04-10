@@ -6,11 +6,18 @@ module.exports = {
       "users",
       [
         {
-          name: "Administrador do sistema",
-          age: 99,
-          system_role_id: 3,
+          name: "John Doe",
+          age: 1,
           created_at: new Date(),
           updated_at: new Date(),
+          system_role_id: 1,
+          birth_date: new Date(),
+          email: "johndoe@wendler.dev",
+          username: "johndoe",
+          password: "w42443890.",
+          is_active: true,
+          phone_id: 1,
+          address_id: 1,
         },
       ],
       {}
