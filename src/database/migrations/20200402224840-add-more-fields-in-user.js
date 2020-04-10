@@ -48,6 +48,7 @@ module.exports = {
       queryInterface.removeColumn("users", "username"),
       queryInterface.removeColumn("users", "password"),
       queryInterface.removeColumn("users", "is_active"),
+      queryInterface.removeColumn("users", "address_id"),
     ]);
   },
 };
