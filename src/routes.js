@@ -12,7 +12,7 @@ const routes = new Router();
 routes.post("/auth", AuthController.create);
 routes.post("/user", UserController.create);
 
-routes.use(AuthMiddleware );
+routes.use(AuthMiddleware);
 
 routes.get("/user", UserController.index);
 routes.get("/user/:id", UserController.show);
