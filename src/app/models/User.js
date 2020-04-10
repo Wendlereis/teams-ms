@@ -30,6 +30,10 @@ class User extends Model {
     this.belongsTo(models.Address, { foreignKey: "address_id" });
     this.belongsTo(models.PhoneNumber, { foreignKey: "phone_id" });
   }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password);
+  }
 }
 
 export default User;
