@@ -1,4 +1,5 @@
 import Sequelize, { Model } from "sequelize";
+import bcrypt from "bcryptjs";
 
 class User extends Model {
   static init(sequelize) {
@@ -17,6 +18,10 @@ class User extends Model {
       }
     );
 
+    this.addHook("beforeCreate", async user => {
+      user.password = await bcrypt.hash(user.password, 8);
+    });
+
     return this;
   }
 
@@ -24,6 +29,10 @@ class User extends Model {
     this.belongsTo(models.SystemRole, { foreignKey: "system_role_id" });
     this.belongsTo(models.Address, { foreignKey: "address_id" });
     this.belongsTo(models.PhoneNumber, { foreignKey: "phone_id" });
+  }
+
+  checkPassword(password) {
+    return bcrypt.compare(password, this.password);
   }
 }
 

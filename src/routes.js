@@ -3,12 +3,19 @@ import { Router } from "express";
 import * as UserController from "./app/controllers/UserController";
 import * as EventController from "./app/controllers/EventController";
 import * as UserTeamController from "./app/controllers/UserTeamController";
+import * as AuthController from "./app/controllers/AuthController";
+
+import AuthMiddleware from "./app/middlewares/auth";
 
 const routes = new Router();
 
+routes.post("/auth", AuthController.create);
+routes.post("/user", UserController.create);
+
+routes.use(AuthMiddleware);
+
 routes.get("/user", UserController.index);
 routes.get("/user/:id", UserController.show);
-routes.post("/user", UserController.create);
 routes.put("/user/:id", UserController.update);
 routes.delete("/user/:id", UserController.destroy);
 
