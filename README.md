@@ -1,33 +1,70 @@
 # Teams
 
+Teams is a platform to manage events and theis teams!
+
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/7e95bd1064c8458d94eabfa137c79c70)](https://app.codacy.com/manual/Wendlereis/teams-ms?utm_source=github.com&utm_medium=referral&utm_content=Wendlereis/teams-ms&utm_campaign=Badge_Grade_Settings)
 
-## Database
+## Prerequisites
 
-### Connect to database
+To run this app you'll need
 
-#### create postgres instance
+- nodejs
+- docker and docker-compose
+- yarn
 
-`docker run --name teams-db -e POSTGRES_PASSWORD=teams -p 5432:5432 -d postgress`
+## Setup environment
 
-#### start teams-db container
+### Variables
 
-`docker start teams-db`
+To run the application we need to setup some environment variables.
 
-#### stop teams-db container
+#### container variables
 
-`docker stop teams-db`
+In `docker-compose.local.yaml` edit the values to create your postgre database, then add the values in `environment` parameter of `team-ms` service
 
-#### setup dotenv file
+#### .env file
 
-add values in `.env` file to connect to your database
+In root folder, create a .env file
 
-### Create database structure
+```sh
+$ cp ./.env.sample ./.env 
+```
 
-#### create migration
+then, change the values
 
-`yarn sequelize migration:create --name=[migration-name]`
+### Run the app
 
-#### run migrations
+```sh
+$ docker-compose -f docker-compose.local.yaml up -d
+```
 
-`yarn sequelize db:migrate`
+### Database
+
+After run the `teams-db` container, we need to create our tables and populate them.
+
+#### install sequelize command line interface
+
+```sh
+$ yarn add sequelize-cli
+```
+#### run sequelize migrations
+
+```sh
+$ yarn sequelize db:migrate
+```
+
+#### run sequelize seeds
+
+```sh
+$ yarn sequelize db:seed:all
+```
+
+## Give it a try!
+
+```sh
+curl --location --request POST '{{localhost}}/auth' \
+--data-raw '{
+	"usernameOrEmail": "johndoe",
+	"password": "w42443890."
+}'
+```

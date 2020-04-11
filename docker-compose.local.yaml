@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  teams-db:
+    image: postgres
+    environment:
+      POSTGRES_USER: teams
+      POSTGRES_PASSWORD: teams
+      POSTGRES_DB: teams
+    ports:
+      - "5432:5432"
+
+  teams-ms:
+    image: teams-ms
+    build: .
+    depends_on:
+      - teams-db
+    environment:
+      DB_DIALECT: postgres
+      DB_HOST:  localhost
+      DB_USERNAME: teams
+      DB_PASSWORD:  teams
+      DB_DATABASE: teams
+      JWT_SECRET:
+    ports:
+      - "3333:3333"
+    volumes:
+      - ./:/usr/src/app
+    command: yarn start
