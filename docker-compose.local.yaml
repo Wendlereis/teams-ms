@@ -9,6 +9,8 @@ services:
       POSTGRES_DB: teams
     ports:
       - "5432:5432"
+    networks:
+      - main
 
   teams-ms:
     image: teams-ms
@@ -17,7 +19,7 @@ services:
       - teams-db
     environment:
       DB_DIALECT: postgres
-      DB_HOST:  localhost
+      DB_HOST:  teams-db
       DB_USERNAME: teams
       DB_PASSWORD:  teams
       DB_DATABASE: teams
@@ -27,3 +29,7 @@ services:
     volumes:
       - ./:/usr/src/app
     command: yarn start
+    networks:
+      - main
+networks:
+  main:
