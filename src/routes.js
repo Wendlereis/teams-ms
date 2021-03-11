@@ -4,6 +4,8 @@ import * as UserController from "./app/controllers/UserController";
 import * as EventController from "./app/controllers/EventController";
 import * as UserTeamController from "./app/controllers/UserTeamController";
 import * as AuthController from "./app/controllers/AuthController";
+import * as TeamController from "./app/controllers/TeamController.";
+import * as TeamRoleController from "./app/controllers/TeamRoleController";
 
 import AuthMiddleware from "./app/middlewares/auth";
 
@@ -30,5 +32,9 @@ routes.get("/user-team/:id", UserTeamController.show);
 routes.post("/user-team", UserTeamController.create);
 routes.put("/user-team/:id", UserTeamController.update);
 routes.delete("/user-team/:id", UserTeamController.destroy);
+
+routes.get("/team", TeamController.index);
+
+routes.get("/team/role", TeamRoleController.index);
 
 export default routes;
