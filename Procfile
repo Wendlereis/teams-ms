@@ -1,2 +1,2 @@
 web: yarn start:prod
-release: yarn sequelize db:migrate
+release: yarn add sequelize-cli && yarn sequelize db:migrate
