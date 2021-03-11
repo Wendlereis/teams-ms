@@ -4,7 +4,9 @@
   "main": "src/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "build": "yarn sucrase ./src -d ./build --transforms imports",
+    "start": "nodemon src/server.js",
+    "start:prod": "node ./build/server.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
